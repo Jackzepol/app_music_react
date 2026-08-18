@@ -1,0 +1,19 @@
+
+
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 0px 20px 0px 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  cursor: pointer;
+}

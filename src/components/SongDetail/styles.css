@@ -1,0 +1,16 @@
+
+
+
+.song-detail {
+  padding: 20px;
+}
+
+.song-detail img {
+  width: 300px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+p {
+  padding: 0px 20px;
+}
