@@ -1,21 +1,19 @@
 //este módulo sirve para mostrar la lista de canciones usando un componente
 // apoyado del uso de react
 
-
 import React from "react";
-import "./styles.css";
+import { SongContainer, Button } from "./styles";
 
 const Song = ({ title, artist, duration, onAdd, onRemove }) => {
   return (
-    <div className="song">
+    <SongContainer>
       <h3>{title}</h3>
       <p>Artista: {artist}</p>
       <p>Duración: {duration}</p>
 
-      {/* Botón para agregar (si existe la función onAdd) */}
       {onAdd && (
-        <button 
-          className="agregar" 
+        <Button
+          className="agregar"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -23,13 +21,12 @@ const Song = ({ title, artist, duration, onAdd, onRemove }) => {
           }}
         >
           Agregar a mi biblioteca
-        </button>
+        </Button>
       )}
 
-      {/* Botón para quitar (si existe la función onRemove) */}
       {onRemove && (
-        <button 
-          className="remover" 
+        <Button
+          className="remover"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -37,10 +34,10 @@ const Song = ({ title, artist, duration, onAdd, onRemove }) => {
           }}
         >
           Quitar de mi biblioteca
-        </button>
+        </Button>
       )}
-    </div>
+    </SongContainer>
   );
-}
+};
 
 export default Song;

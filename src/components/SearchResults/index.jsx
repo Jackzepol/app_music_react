@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Song from "../Song";
-import "./styles.css";
+
+import {ResultsContainer, Title, SongWrapper, Message} from "./styles";
+
 
 const SearchResults = ({ artist, albumsData, loading, error, onAddSong }) => {
   const [songs, setSongs] = useState([]);
@@ -41,17 +43,44 @@ const SearchResults = ({ artist, albumsData, loading, error, onAddSong }) => {
   }, [albumsData]);
 
   // Mensajes condicionales
-  if (loading || loadingTracks) return <p>Cargando canciones...</p>;
-  if (error) return <p>Error al cargar los datos. Intenta nuevamente.</p>;
-  if (!artist) return <p>Ingresa un artista para buscar canciones.</p>;
-  if (!songs.length) return <p>No se encontraron canciones para "{artist}".</p>;
+  if (loading || loadingTracks) {
+    return (
+      <ResultsContainer>
+        <Message>Cargando canciones...</Message>
+      </ResultsContainer>
+    );
+  }
+
+  if (error) {
+    return (
+      <ResultsContainer>
+        <Message>Error al cargar los datos. Intenta nuevamente.</Message>
+      </ResultsContainer>
+    );
+  } 
+
+  if (!artist) {
+    return (
+      <ResultsContainer>
+        <Message>Ingresa un artista para buscar canciones.</Message>
+      </ResultsContainer>
+    );
+  } 
+
+  if (!songs.length) {
+    return (
+      <ResultsContainer>
+        <Message>No se encontraron canciones para "{artist}".</Message>
+      </ResultsContainer>
+    );
+  }
 
   return (
-    <div className="search-results">
-      <h2 className="title">Resultados de búsqueda</h2>
+    <ResultsContainer>
+      <Title>Resultados de búsqueda</Title>
 
       {songs.map((song) => (
-        <div key={song.idTrack || Math.random()}>
+        <SongWrapper key={song.idTrack || Math.random()}>
           <Link
             to={`/song/${song.idAlbum}/${song.idTrack}/${song.strArtist}`}
           >
@@ -62,9 +91,9 @@ const SearchResults = ({ artist, albumsData, loading, error, onAddSong }) => {
               onAdd={() => onAddSong(song)}
             />
           </Link>
-        </div>
+        </SongWrapper>
       ))}
-    </div>
+    </ResultsContainer>
   );
 };
 

@@ -7,6 +7,9 @@ import SearchResults from "./components/SearchResults";
 import SongDetail from "./components/SongDetail";
 import Library from "./components/Library";
 import useFetch from "./Hook";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./components/Styles/globalStyles";
+import theme from "./components/Styles/theme";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -33,7 +36,9 @@ function App() {
   const { data: albumsData, loading, error } = useFetch(searchUrl);
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+
       <Header />
 
       <Routes>
@@ -68,7 +73,7 @@ function App() {
           element={<SongDetail />}
         />
       </Routes>
-    </div>
+    </ThemeProvider>
   );
 }
 

@@ -1,15 +1,14 @@
 //Este módulo sirve para crear un componente de cabecera para la
 //mini app que muestra una lista de canciones 
 
-
 import React from 'react';
-import "./styles.css";
+import HeaderContainer from "./styles"
 
 const Header = () => {
   return (
-    <header className="header">
+    <HeaderContainer>
         <h1>Mi Biblioteca Musical</h1>
-    </header>
+    </HeaderContainer>
   );
 };
 

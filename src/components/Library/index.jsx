@@ -1,14 +1,15 @@
 
 import React from "react";
 import Song from "../Song/index";
-import "./styles.css";
+import { LibraryContainer, Title, EmptyMessage } from "./styles";
+
 
 const Library = ({ songs, onRemoveSong }) => {
   return (
-    <div className="library">
-      <h2 className="title">Mi biblioteca</h2>
+    <LibraryContainer>
+      <Title>Mi biblioteca</Title>
 
-      {songs.length === 0 && <p className="message">No has agregado canciones aún.</p>}
+      {songs.length === 0 && <EmptyMessage className="message">No has agregado canciones aún.</EmptyMessage>}
 
       {songs.map((song) => (
         <Song
@@ -19,7 +20,7 @@ const Library = ({ songs, onRemoveSong }) => {
           onRemove={() => onRemoveSong(song.idTrack)}
         />
       ))}
-    </div>
+    </LibraryContainer>
   );
 }
 

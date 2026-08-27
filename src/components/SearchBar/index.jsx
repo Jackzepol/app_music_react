@@ -1,6 +1,7 @@
 
 import React from "react";
-import "./styles.css";
+import { SearchBarContainer, Input, Button } from "./styles";
+
 
 const SearchBar = ({ inputValue, setInputValue, onSearch }) => {
   const handleKeyDown = (e) => {
@@ -10,8 +11,8 @@ const SearchBar = ({ inputValue, setInputValue, onSearch }) => {
   };
 
   return (
-    <div className="search-bar">
-      <input
+    <SearchBarContainer>
+      <Input
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -19,8 +20,8 @@ const SearchBar = ({ inputValue, setInputValue, onSearch }) => {
         placeholder="Buscar artista..."
       />
 
-      <button onClick={onSearch}>Buscar</button>
-    </div>
+      <Button onClick={onSearch}>Buscar</Button>
+    </SearchBarContainer>
   );
 };
 
