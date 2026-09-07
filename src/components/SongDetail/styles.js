@@ -1,4 +1,4 @@
-/*Estilos con react para los detalles de las canciones*/
+//Estilos con react para los detalles de las canciones
 
 
 import styled from "styled-components";
