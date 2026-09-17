@@ -1,12 +1,23 @@
 
-import React from "react";
+
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { SearchBarContainer, Input, Button } from "./styles";
+import { fetchSongs } from "../../redux/slices/searchSlice";
 
+const SearchBar = () => {
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
-const SearchBar = ({ inputValue, setInputValue, onSearch }) => {
+  const handleSearch = () => {
+    if (inputValue.trim()) {
+      dispatch(fetchSongs(inputValue));
+    }
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      onSearch();
+      handleSearch();
     }
   };
 
@@ -20,7 +31,7 @@ const SearchBar = ({ inputValue, setInputValue, onSearch }) => {
         placeholder="Buscar artista..."
       />
 
-      <Button onClick={onSearch}>Buscar</Button>
+      <Button onClick={handleSearch}>Buscar</Button>
     </SearchBarContainer>
   );
 };

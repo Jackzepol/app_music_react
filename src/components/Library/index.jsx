@@ -1,16 +1,16 @@
 
+
 import React from "react";
 import Song from "../Song";
 import { LibraryContainer, Title, EmptyMessage } from "./styles";
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeSong } from "../../redux/libraryActions";
+import { removeSong } from "../../redux/slices/librarySlice";
 
 const Library = () => {
   const dispatch = useDispatch();
 
-  // El estado global ES la biblioteca (un array)
-  const library = useSelector(state => state);
+  const songs = useSelector((state) => state.library.songs);
 
   const handleRemove = (id) => {
     dispatch(removeSong(id));
@@ -20,19 +20,24 @@ const Library = () => {
     <LibraryContainer>
       <Title>Mi biblioteca</Title>
 
-      {library.length === 0 && (
+      {songs.length === 0 && (
         <EmptyMessage>No has agregado canciones aún.</EmptyMessage>
       )}
 
-      {library.map((song) => (
-        <Song
-          key={song.id}
-          title={song.title}
-          artist={song.artist}
-          duration={song.duration}
-          onRemove={() => handleRemove(song.id)}
-        />
-      ))}
+      {songs.map((song) => {
+        
+        const songId = song.idAlbum || song.id;
+
+        return (
+          <Song
+            key={songId}
+            title={song.strTrack || song.title}
+            artist={song.strArtist || song.artist}
+            duration={song.intDuration || song.duration}
+            onRemove={() => handleRemove(songId)}
+          />
+        );
+      })}
     </LibraryContainer>
   );
 };
