@@ -7,11 +7,10 @@ export const fetchSongs = createAsyncThunk(
   async (searchTerm, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://www.theaudiodb.com/api/v1/json/2/searchalbum.php?s=${searchTerm}`
+        `https://www.theaudiodb.com/api/v1/json/123/track-top10.php?s=${searchTerm}`
       );
       const data = await response.json();
-      
-      return data.album || [];
+      return data.track || []; // varias canciones
     } catch (error) {
       return rejectWithValue('Error al conectar con la API.');
     }

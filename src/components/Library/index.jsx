@@ -3,13 +3,11 @@
 import React from "react";
 import Song from "../Song";
 import { LibraryContainer, Title, EmptyMessage } from "./styles";
-
 import { useSelector, useDispatch } from "react-redux";
 import { removeSong } from "../../redux/slices/librarySlice";
 
 const Library = () => {
   const dispatch = useDispatch();
-
   const songs = useSelector((state) => state.library.songs);
 
   const handleRemove = (id) => {
@@ -25,7 +23,6 @@ const Library = () => {
       )}
 
       {songs.map((song) => {
-        
         const songId = song.idAlbum || song.id;
 
         return (

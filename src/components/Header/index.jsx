@@ -2,14 +2,12 @@
 //mini app que muestra una lista de canciones 
 
 import React from 'react';
-import HeaderContainer from "./styles"
+import HeaderContainer from "./styles";
 
-const Header = () => {
-  return (
-    <HeaderContainer>
-        <h1>Mi Biblioteca Musical</h1>
-    </HeaderContainer>
-  );
-};
+const Header = () => (
+  <HeaderContainer>
+    <h1>Mi Biblioteca Musical</h1>
+  </HeaderContainer>
+);
 
 export default Header;

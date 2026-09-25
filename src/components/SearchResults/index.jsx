@@ -1,5 +1,6 @@
 
 
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,11 +10,11 @@ import { addSong } from "../../redux/slices/librarySlice";
 
 const SearchResults = () => {
   const dispatch = useDispatch();
-  
   const { results, loading, error } = useSelector((state) => state.search);
 
+  console.log("Resultados actuales en Redux:", results); // <-- Agrega esto
+
   const handleAddSong = (song) => {
-    
     const formattedSong = {
       idAlbum: song.idAlbum || song.idTrack,
       strTrack: song.strTrack || song.strAlbum,
@@ -25,29 +26,10 @@ const SearchResults = () => {
     dispatch(addSong(formattedSong));
   };
 
-  if (loading) {
-    return (
-      <ResultsContainer>
-        <Message>Cargando resultados...</Message>
-      </ResultsContainer>
-    );
-  }
-
-  if (error) {
-    return (
-      <ResultsContainer>
-        <Message>{error}</Message>
-      </ResultsContainer>
-    );
-  }
-
-  if (!results || results.length === 0) {
-    return (
-      <ResultsContainer>
-        <Message>No hay resultados para mostrar. Realiza una búsqueda.</Message>
-      </ResultsContainer>
-    );
-  }
+  if (loading) return <Message>Cargando resultados...</Message>;
+  if (error) return <Message>{error}</Message>;
+  if (!results || results.length === 0)
+    return <Message>No hay resultados para mostrar.</Message>;
 
   return (
     <ResultsContainer>
@@ -55,7 +37,7 @@ const SearchResults = () => {
 
       {results.map((song) => {
         const songKey = song.idTrack || song.idAlbum;
-        
+
         return (
           <SongWrapper key={songKey}>
             <Link to={`/song/${song.idAlbum || song.idTrack}`}>

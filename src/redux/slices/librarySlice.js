@@ -1,5 +1,6 @@
 
 
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -12,9 +13,7 @@ const librarySlice = createSlice({
   reducers: {
     addSong: (state, action) => {
       const exists = state.songs.some(song => song.idAlbum === action.payload.idAlbum);
-      if (!exists) {
-        state.songs.push(action.payload);
-      }
+      if (!exists) state.songs.push(action.payload);
     },
     removeSong: (state, action) => {
       state.songs = state.songs.filter(song => song.idAlbum !== action.payload);

@@ -1,4 +1,104 @@
 
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import SongDetailPage from "./pages/SongDetailPage";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/globalStyles";
+import theme from "./styles/theme";
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/song/:albumId" element={<SongDetailPage />} />
+      </Routes>
+    </ThemeProvider>
+  );
+}
+
+export default App;
+
+
+/*
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import SearchResults from "./components/SearchResults";
+import Library from "./components/Library";
+import SongDetail from "./components/SongDetail";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/globalStyles";
+import theme from "./styles/theme";
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Header />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <SearchBar />
+              <SearchResults />
+              <Library />
+            </>
+          }
+        />
+
+        <Route path="/song/:albumId" element={<SongDetail />} />
+      </Routes>
+    </ThemeProvider>
+  );
+}
+
+export default App;
+
+/*
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import SongDetailPage from "./pages/SongDetailPage";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/globalStyles";
+import theme from "./styles/theme";
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/song/:albumId" element={<SongDetailPage />} />
+      </Routes>
+    </ThemeProvider>
+  );
+}
+
+export default App;
+
+
+
+
+
+/*
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -65,3 +165,4 @@ function App() {
 }
 
 export default App;
+*/

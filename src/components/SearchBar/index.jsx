@@ -1,5 +1,6 @@
 
 
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { SearchBarContainer, Input, Button } from "./styles";
@@ -16,9 +17,7 @@ const SearchBar = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
+    if (e.key === "Enter") handleSearch();
   };
 
   return (
@@ -30,7 +29,6 @@ const SearchBar = () => {
         onKeyDown={handleKeyDown}
         placeholder="Buscar artista..."
       />
-
       <Button onClick={handleSearch}>Buscar</Button>
     </SearchBarContainer>
   );
